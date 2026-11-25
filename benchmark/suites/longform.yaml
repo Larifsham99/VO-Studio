@@ -1,0 +1,10 @@
+# Long-form: chunked generation with consistent identity across chunks.
+# Measured: total RTF, per-chunk speaker similarity to chunk 0 (drift), per-chunk
+# CER, failures (truncation, babble, repeated words), and peak memory over the
+# whole run. Replace text_file with your own script for realistic tests.
+name: longform
+type: longform
+language: ms
+max_chars: 280
+items:
+  - {id: lf_story_ms, text_file: longform_story_ms.txt}

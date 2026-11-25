@@ -1,0 +1,45 @@
+# Copy to refs/manifest.yaml (git-ignored) and fill in. Paths are relative to
+# this file. The runner refuses any voice or style reference without a
+# `consent` entry: only use recordings of people who have authorised it.
+#
+# Recording spec (see refs/README.md): mono, >= 24 kHz WAV, close mic, quiet
+# room, no music/reverb. reference = 10-20 s clean neutral speech.
+
+voices:
+  - id: voice_a  # permanent profile 1
+    permanent: true
+    consent: "Name, written consent on YYYY-MM-DD, scope: Latif Voice AI private use"
+    reference: voices/voice_a/reference.wav
+    transcript: "Exact words spoken in reference.wav."
+    holdout: voices/voice_a/holdout.wav  # a DIFFERENT clip of the same speaker (scoring only)
+    emotion_bank:  # optional; the same speaker performing each emotion, 6-12 s each
+      happy: {path: voices/voice_a/happy.wav, transcript: "..."}
+      sad: {path: voices/voice_a/sad.wav, transcript: "..."}
+      angry: {path: voices/voice_a/angry.wav, transcript: "..."}
+      whispers: {path: voices/voice_a/whispers.wav, transcript: "..."}
+
+  - id: voice_b  # permanent profile 2
+    permanent: true
+    consent: "..."
+    reference: voices/voice_b/reference.wav
+    transcript: "..."
+    holdout: voices/voice_b/holdout.wav
+
+  - id: guest_1  # Mode A: an authorised one-off reference (not permanent)
+    permanent: false
+    consent: "..."
+    reference: voices/guest_1/reference.wav
+    transcript: "..."
+    holdout: voices/guest_1/holdout.wav
+
+style_refs:  # Mode B delivery references (expressive performances)
+  - id: style_angry_01
+    consent: "..."
+    path: style/angry_01.wav
+    transcript: "..."
+    language: ms
+  - id: style_storyteller_01
+    consent: "..."
+    path: style/storyteller_01.wav
+    transcript: "..."
+    language: ms

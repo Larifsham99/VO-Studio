@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vobench"
+version = "0.1.0"
+description = "Phase-1 model benchmark harness for Latif Voice AI"
+requires-python = ">=3.10"
+dependencies = ["numpy", "soundfile", "pyyaml", "psutil"]
+
+[project.optional-dependencies]
+gpu = ["nvidia-ml-py"]
+analysis = ["librosa>=0.10", "scipy"]
+eval = [
+  "librosa>=0.10", "scipy", "jiwer", "faster-whisper",
+  "speechbrain", "torch", "torchaudio", "funasr", "modelscope",
+]
+dev = ["pytest", "librosa>=0.10", "scipy"]
+
+[project.scripts]
+vobench = "vobench.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["vobench*"]

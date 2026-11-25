@@ -1,0 +1,15 @@
+# Voice cloning (Mode A + permanent-voice fidelity).
+# For every voice in refs/manifest.yaml, synthesise held-out text (never the
+# reference transcript) and compare to a *different* real recording of that
+# speaker (voices[].holdout) so similarity isn't inflated by self-comparison.
+# VoxCPM2 is run in both "isolated" and "ultimate" clone modes.
+name: cloning
+type: clone
+items:
+  - {id: cl_ms_01, language: ms, text: "Assalamualaikum dan salam sejahtera. Terima kasih kerana mendengar rancangan kami pada petang ini."}
+  - {id: cl_ms_02, language: ms, text: "Dalam episod kali ini, kita akan berbincang tentang cara menguruskan kewangan dengan lebih bijak."}
+  - {id: cl_ms_03, language: ms, text: "Kalau ada soalan, jangan segan-segan tinggalkan komen di bawah, ya."}
+  - {id: cl_ms_04, language: ms, text: "Cuaca hari ini agak panas, jadi pastikan anda minum air secukupnya."}
+  - {id: cl_ms_05, language: ms, text: "Saya masih ingat lagi zaman kanak-kanak saya di kampung, bermain layang-layang di sawah."}
+  - {id: cl_en_01, language: en, text: "Welcome back to the show. Today we're talking about how to tell better stories."}
+  - {id: cl_en_02, language: en, text: "If you enjoyed this episode, share it with a friend who might find it useful."}

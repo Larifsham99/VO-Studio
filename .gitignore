@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv*/
+venvs/
+*.egg-info/
+.pytest_cache/
+# generated audio and private voice data never go in git
+benchmark/results/
+benchmark/refs/**/*.wav
+benchmark/refs/**/*.mp3
+benchmark/refs/**/*.flac
+benchmark/refs/manifest.yaml
+benchmark/anchors/

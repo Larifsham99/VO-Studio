@@ -1,0 +1,10 @@
+# Proposed viability gates for Phase 1. Adjust before running; these decide
+# whether a model is good enough to build the full application on.
+malay_cer_max: 0.08            # Whisper CER on Malay suite; calibrate against human anchors
+clone_sim_min_ratio_of_human: 0.85   # clone sim >= 85% of real same-speaker sim
+clone_sim_abs_min: 0.55        # used only when no holdout clips exist
+emotion_direction_min: 0.70    # share of tagged outputs that move the right way vs neutral
+tag_read_aloud_max: 0          # a tag spoken as a word is an automatic fail
+utmos_min: 3.5                 # predicted naturalness (1-5)
+rtf_max: 1.0                   # must generate faster than real time on the target GPU
+vram_mb_max: 11000             # set to your GPU's VRAM minus ~1 GB headroom

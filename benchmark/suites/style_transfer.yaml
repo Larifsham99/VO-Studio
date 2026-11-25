@@ -1,0 +1,18 @@
+# Mode B: permanent voice identity + delivery from a reference recording.
+# Pairs every permanent voice with every style_ref in refs/manifest.yaml.
+#
+# Routes compared (runner flag --routes):
+#   native      adapter's own style-ref support (VoxCPM2 clone_mode=style_cont)
+#   instruction analyse reference -> style instruction -> controllable clone
+#   tts_then_vc clone style-ref speaker on new text, then VC to permanent voice
+#   s2s         VC the reference recording itself (only for same_text items)
+#
+# Success = high similarity to the PERMANENT voice, LOW similarity to the
+# reference speaker, and small style distance to the reference.
+name: style_transfer
+type: style_transfer
+items:
+  - {id: st_same_text, same_text: true}  # text = style_ref transcript (dubbing / re-voicing)
+  - {id: st_new_ms_01, language: ms, text: "Saya tak percaya awak sanggup buat begitu pada kawan baik awak sendiri."}
+  - {id: st_new_ms_02, language: ms, text: "Dengar sini baik-baik, kerana saya hanya akan cakap sekali sahaja."}
+  - {id: st_new_ms_03, language: ms, text: "Wah, cantiknya pemandangan di atas bukit ni, rasa macam dalam mimpi."}

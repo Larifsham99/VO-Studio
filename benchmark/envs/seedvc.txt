@@ -1,0 +1,2 @@
+seed-vc==0.4.3
+nvidia-ml-py

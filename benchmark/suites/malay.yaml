@@ -1,0 +1,50 @@
+# Malay pronunciation suite.
+# Each item is generated twice: raw text and with vobench Malay normalisation
+# (`normalize: both`), so we learn whether the model needs a text front-end.
+# `focus` groups results in the report.
+name: malay
+type: tts
+language: ms
+normalize: both
+items:
+  # --- everyday sentences
+  - {id: ms_basic_01, focus: basic, text: "Selamat pagi, semua. Hari ini kita akan belajar sesuatu yang baharu."}
+  - {id: ms_basic_02, focus: basic, text: "Saya sudah makan tengah hari, tetapi saya masih lapar sedikit."}
+  - {id: ms_basic_03, focus: basic, text: "Terima kasih kerana sudi datang ke majlis perkahwinan kami."}
+  - {id: ms_basic_04, focus: basic, text: "Jangan lupa tutup lampu dan kunci pintu sebelum keluar rumah."}
+  # --- final -k glottal stop, digraphs ng/ny/sy/kh/gh
+  - {id: ms_phon_01, focus: phonology, text: "Anak itu tidak mahu masuk ke dalam kelas kerana takut."}
+  - {id: ms_phon_02, focus: phonology, text: "Nyanyian burung di hutan itu sungguh nyaring dan menyenangkan."}
+  - {id: ms_phon_03, focus: phonology, text: "Syarikat itu menerima khabar gembira tentang projek di Ghana."}
+  - {id: ms_phon_04, focus: phonology, text: "Bunga mengkudu tumbuh di tengah ladang yang luas."}
+  # --- e pepet vs e taling homographs (context decides)
+  - {id: ms_e_01, focus: e_pepet_taling, text: "Perang dunia kedua berakhir pada tahun sembilan belas empat puluh lima.", note: "perang = war (pepet)"}
+  - {id: ms_e_02, focus: e_pepet_taling, text: "Rambutnya berwarna perang keemasan di bawah cahaya matahari.", note: "perang = blond (taling)"}
+  - {id: ms_e_03, focus: e_pepet_taling, text: "Tolong semak semula dokumen ini sebelum dihantar.", note: "semak = check (pepet)"}
+  - {id: ms_e_04, focus: e_pepet_taling, text: "Kucing itu bersembunyi di dalam semak di belakang rumah.", note: "semak = bushes (taling)"}
+  - {id: ms_e_05, focus: e_pepet_taling, text: "Sila ambil sebatang pen merah dan sehelai kertas."}
+  # --- affixation, long words, reduplication
+  - {id: ms_morph_01, focus: morphology, text: "Kerajaan memperkenalkan dasar baharu untuk mengurangkan ketidakadilan sosial."}
+  - {id: ms_morph_02, focus: morphology, text: "Kanak-kanak itu berlari-lari anak di sepanjang pantai."}
+  - {id: ms_morph_03, focus: morphology, text: "Pertanggungjawaban pemimpin sangat penting dalam sesebuah organisasi."}
+  # --- place and personal names
+  - {id: ms_names_01, focus: names, text: "Kami bertolak dari Kuala Terengganu ke Kota Kinabalu melalui Pulau Pinang."}
+  - {id: ms_names_02, focus: names, text: "Encik Abdul Latif bin Ismail akan menyampaikan ucapan sebentar lagi."}
+  - {id: ms_names_03, focus: names, text: "Lawatan ke Melaka, Seremban dan Johor Bahru dijadualkan minggu depan."}
+  # --- numbers, currency, dates, time, ordinals (raw digits on purpose)
+  - {id: ms_num_01, focus: numbers, text: "Harga tiket ialah RM25.50 seorang, dan kanak-kanak bawah 12 tahun percuma."}
+  - {id: ms_num_02, focus: numbers, text: "Mesyuarat akan diadakan pada 15/08/2026 pukul 10:30 pagi."}
+  - {id: ms_num_03, focus: numbers, text: "Kadar inflasi meningkat sebanyak 3.2% berbanding tahun lalu."}
+  - {id: ms_num_04, focus: numbers, text: "Dia menduduki tempat ke-3 daripada 1,250 peserta."}
+  - {id: ms_num_05, focus: numbers, text: "Sila hubungi kami di talian 012-345 6789 untuk maklumat lanjut."}
+  # --- questions and particles
+  - {id: ms_q_01, focus: prosody_question, text: "Awak dah makan ke belum?"}
+  - {id: ms_q_02, focus: prosody_question, text: "Bilakah kereta api terakhir bertolak ke Ipoh?"}
+  - {id: ms_q_03, focus: prosody_question, text: "Betul ke apa yang dia cakap tadi tu?"}
+  # --- colloquial / code-switching (Malaysian English mix)
+  - {id: ms_cs_01, focus: code_switch, text: "Esok I ada meeting dengan client, so kita jumpa lepas lunch boleh?"}
+  - {id: ms_cs_02, focus: code_switch, text: "Jom kita pergi mamak, aku belanja teh tarik malam ni."}
+  - {id: ms_cs_03, focus: code_switch, text: "Projek ni memang challenging, tapi kita boleh buat lah."}
+  # --- formal / news register
+  - {id: ms_news_01, focus: formal, text: "Menurut laporan Jabatan Meteorologi, hujan lebat dijangka berterusan sehingga hujung minggu ini."}
+  - {id: ms_news_02, focus: formal, text: "Perdana Menteri mengumumkan peruntukan tambahan bagi sektor pendidikan luar bandar."}

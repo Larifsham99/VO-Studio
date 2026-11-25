@@ -1,0 +1,38 @@
+# Emotion suite. Every tag is tested; each item is generated
+#   - once as a neutral baseline (tags stripped, no control)  -> for deltas
+#   - once per emotion strategy the adapter supports:
+#       instruction  (VoxCPM2 / instruct models)
+#       exaggeration (Chatterbox)
+#       bank         (any cloning model; needs voices[].emotion_bank[tag] clip)
+# Pass criterion is "sounds like the emotion", NOT "tag read aloud" - the ASR
+# check flags any output whose transcript contains the tag word.
+name: emotion
+type: emotion
+language: ms
+items:
+  - {id: emo_excited_ms, text: "[excited] Kita menang! Saya tak sangka langsung kita boleh menang pertandingan ni!"}
+  - {id: emo_happy_ms, text: "[happy] Alhamdulillah, akhirnya kita dapat berkumpul semula bersama keluarga."}
+  - {id: emo_sad_ms, text: "[sad] Dia sudah pergi, dan rumah ini terasa begitu sunyi tanpanya."}
+  - {id: emo_angry_ms, text: "[angry] Berapa kali saya nak cakap? Jangan sentuh barang saya tanpa izin!"}
+  - {id: emo_whispers_ms, text: "[whispers] Diam, jangan bising. Ada orang di luar pintu itu."}
+  - {id: emo_shouts_ms, text: "[shouts] Semua orang keluar sekarang! Bangunan ini terbakar!"}
+  - {id: emo_laughs_ms, text: "[laughs] Kelakar betul cerita kau tu, aku tak boleh berhenti ketawa."}
+  - {id: emo_sighs_ms, text: "[sighs] Banyak lagi kerja yang belum siap, entah bila boleh rehat."}
+  - {id: emo_curious_ms, text: "[curious] Eh, apa benda yang bersinar di dalam kotak itu agaknya?"}
+  - {id: emo_sarcastic_ms, text: "[sarcastic] Oh, bagus sangatlah. Lambat dua jam, memang tepat pada masanya."}
+  - {id: emo_crying_ms, text: "[crying] Saya minta maaf, mak. Saya betul-betul minta maaf."}
+  - {id: emo_fearful_ms, text: "[fearful] Bunyi apa tu? Saya rasa ada sesuatu yang mengikut kita."}
+  - {id: emo_calm_ms, text: "[calm] Tarik nafas perlahan-lahan. Semuanya akan baik-baik sahaja."}
+  - {id: emo_confident_ms, text: "[confident] Saya yakin produk ini akan mengubah cara kita bekerja."}
+  - {id: emo_serious_ms, text: "[serious] Ini amaran terakhir. Pelanggaran peraturan akan dikenakan tindakan tegas."}
+  - {id: emo_dramatic_ms, text: "[dramatic] Dan pada malam itu... segalanya berubah. Buat selama-lamanya."}
+  - {id: emo_softly_ms, text: "[softly] Tidurlah, sayang. Esok kita jalan-jalan ke taman."}
+  # English controls (most models are strongest in English; isolates language effects)
+  - {id: emo_excited_en, language: en, text: "[excited] We did it! I can't believe we actually won the whole thing!"}
+  - {id: emo_sad_en, language: en, text: "[sad] She's gone, and the house feels so empty without her."}
+  - {id: emo_whispers_en, language: en, text: "[whispers] Quiet. Someone is standing right outside the door."}
+  - {id: emo_laughs_en, language: en, text: "[laughs] That is the funniest thing I've heard all week."}
+  # Transitions inside one utterance (ElevenLabs-style multi-tag lines)
+  - {id: emo_mix_01, text: "[calm] Saya cuba bersabar. [angry] Tapi kali ini awak dah melampau!"}
+  - {id: emo_mix_02, text: "[whispers] Rahsia ni hanya kita berdua tahu. [laughs] Jangan beritahu sesiapa, okey?"}
+  - {id: emo_mix_03, text: "[sad] Aku ingatkan aku dah kalah. [excited] Rupa-rupanya aku lulus dengan cemerlang!"}
