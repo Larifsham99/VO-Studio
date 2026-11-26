@@ -10,7 +10,7 @@ case "$MODEL" in
   voxcpm2) ENV=voxcpm2 ;;
   *) echo "Model tidak dikenali: $MODEL (pilih chatterbox_ml atau voxcpm2)"; exit 1 ;;
 esac
-PY=${PYTHON:-python3.11}
+PY=${PYTHON:-python3}
 V=benchmark/venvs/$ENV
 if [ ! -d "$V" ]; then
   $PY -m venv "$V"

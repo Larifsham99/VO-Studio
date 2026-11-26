@@ -1,3 +1,3 @@
-# Python 3.11 (chatterbox-tts pins torch==2.6.0 below Python 3.14)
+# Python 3.10-3.12 (chatterbox-tts pins torch==2.6.0 below Python 3.14)
 chatterbox-tts==0.1.7
 nvidia-ml-py

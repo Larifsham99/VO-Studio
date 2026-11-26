@@ -15,7 +15,7 @@ Fon Android (Chrome)  ──Wi-Fi rumah / Tailscale──▶  PC: server + model
 > dengan `voxcpm2`.
 
 ## 1. Pasang di PC (sekali sahaja)
-Gunakan Linux, atau **WSL2 Ubuntu** di Windows. Anda perlukan Python 3.11,
+Gunakan Linux, atau **WSL2 Ubuntu** di Windows. Anda perlukan Python 3.10–3.12,
 git, FFmpeg dan pemacu NVIDIA.
 
 Untuk WSL2, pasang pemacu NVIDIA **di Windows sahaja** (GeForce / NVIDIA
@@ -26,7 +26,7 @@ bawah.
 git clone https://github.com/larifsham99/vo-studio.git
 cd vo-studio
 git checkout ccr-e9aac4d2-pw4crp
-sudo apt install -y ffmpeg python3.11 python3.11-venv
+sudo apt update && sudo apt install -y ffmpeg python3-venv git
 bash studio/setup_server.sh            # Chatterbox (untuk GPU 6 GB)
 bash studio/setup_server.sh voxcpm2    # pilihan: VoxCPM2, untuk dicuba
 ```
