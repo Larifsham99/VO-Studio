@@ -14,7 +14,24 @@ Fon Android (Chrome)  ──Wi-Fi rumah / Tailscale──▶  PC: server + model
 > muat dalam GPU 6 GB seperti RTX 4050 Laptop. VoxCPM2 (~8 GB) boleh dicuba
 > dengan `voxcpm2`.
 
-## 1. Pasang di PC (sekali sahaja)
+## Cara paling mudah: pemasang automatik (Windows)
+Buka **PowerShell** dan tampal satu baris ini:
+```powershell
+irm https://raw.githubusercontent.com/Larifsham99/VO-Studio/ccr-e9aac4d2-pw4crp/studio/install_windows.ps1 | iex
+```
+Pemasang akan:
+- menyemak GPU;
+- memasang Ubuntu (WSL), ffmpeg dan Python;
+- memuat turun kod dan model Chatterbox;
+- memasang Tailscale;
+- mencipta pintasan **Latif Voice** di Desktop.
+
+Jika Ubuntu belum ada, pemasang akan minta anda membuka PowerShell sebagai
+Administrator. Ia kemudian memasang Ubuntu dan meminta anda restart.
+Selepas restart, buka Ubuntu sekali untuk mencipta nama pengguna, dan tampal
+baris yang sama sekali lagi. Pemasang selamat dijalankan berulang kali.
+
+## 1. Pasang secara manual (jika tidak guna pemasang automatik)
 Gunakan Linux, atau **WSL2 Ubuntu** di Windows. Anda perlukan Python 3.10–3.12,
 git, FFmpeg dan pemacu NVIDIA.
 
