@@ -11,3 +11,5 @@ benchmark/refs/**/*.mp3
 benchmark/refs/**/*.flac
 benchmark/refs/manifest.yaml
 benchmark/anchors/
+node_modules/
+studio/data/

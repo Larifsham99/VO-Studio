@@ -8,6 +8,7 @@ benchmark finds a viable model on the target computer.
 
 - `docs/MODEL_RESEARCH.md`: candidate models, licences, hardware, how Mode A
   and Mode B map to real model capabilities, and decisions needed.
+- `studio/`: **use it from an Android phone.** Your home PC runs the models and the phone controls it (guide in Malay: `studio/README.md`). This is a prototype until the benchmark confirms the best model.
 - `benchmark/`: `vobench`, the harness that runs the benchmark on the target
   GPU and produces `REPORT.md` and a blind listening test.
 

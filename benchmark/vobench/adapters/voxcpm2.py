@@ -45,10 +45,13 @@ class VoxCPM2(TTSAdapter):
         seed_everything(req.seed)
         mode = req.params.get("clone_mode", "isolated")
         text = req.text
+        parts = []
         if req.emotion_strategy == "instruction" and req.tags:
-            text = f"({instruction_for(req.tags)}){text}"
-        elif req.params.get("instruction"):
-            text = f"({req.params['instruction']}){text}"
+            parts.append(instruction_for(req.tags))
+        if req.params.get("instruction"):  # e.g. style derived from a Mode B reference
+            parts.append(req.params["instruction"])
+        if parts:
+            text = f"({', '.join(parts)}){text}"
 
         kw = dict(cfg_value=req.params.get("cfg_value", 2.0),
                   inference_timesteps=req.params.get("inference_timesteps", 10))
