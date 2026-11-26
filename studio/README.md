@@ -10,21 +10,28 @@ Fon Android (Chrome)  ──Wi-Fi rumah / Tailscale──▶  PC: server + model
 
 > **Status: prototaip.** Model mana yang paling bagus untuk bahasa Melayu
 > belum dipastikan. Jalankan benchmark (`benchmark/README.md`) untuk
-> mengesahkannya. Server menggunakan VoxCPM2 secara lalai, dan model boleh
-> ditukar dalam tab **Status**.
+> mengesahkannya. Server menggunakan **Chatterbox** secara lalai, kerana ia
+> muat dalam GPU 6 GB seperti RTX 4050 Laptop. VoxCPM2 (~8 GB) boleh dicuba
+> dengan `voxcpm2`.
 
 ## 1. Pasang di PC (sekali sahaja)
 Gunakan Linux, atau **WSL2 Ubuntu** di Windows. Anda perlukan Python 3.11,
 git, FFmpeg dan pemacu NVIDIA.
+
+Untuk WSL2, pasang pemacu NVIDIA **di Windows sahaja** (GeForce / NVIDIA
+App). Jangan pasang pemacu NVIDIA dalam Ubuntu. Buka PowerShell dan jalankan
+`wsl --install -d Ubuntu`, kemudian buka Ubuntu dan teruskan dengan arahan di
+bawah.
 ```bash
 git clone https://github.com/larifsham99/vo-studio.git
 cd vo-studio
 git checkout ccr-e9aac4d2-pw4crp
 sudo apt install -y ffmpeg python3.11 python3.11-venv
-bash studio/setup_server.sh
+bash studio/setup_server.sh            # Chatterbox (untuk GPU 6 GB)
+bash studio/setup_server.sh voxcpm2    # pilihan: VoxCPM2, untuk dicuba
 ```
-Jika ada ralat CUDA, jalankan semula dengan
-`TORCH_INDEX=https://download.pytorch.org/whl/cu124 bash studio/setup_server.sh`.
+Di akhir pemasangan, skrip memaparkan nama GPU. Jika tertulis
+**TIDAK DIKESAN**, semak pemacu NVIDIA di Windows.
 
 ## 2. Daftar dua suara tetap (untuk Mod B)
 ```bash
@@ -45,7 +52,8 @@ ke Wi-Fi yang sama dengan PC.
 
 ## 4. Mulakan server
 ```bash
-bash studio/start_server.sh
+bash studio/start_server.sh            # Chatterbox
+bash studio/start_server.sh voxcpm2    # atau VoxCPM2
 ```
 Terminal akan memaparkan pautan seperti
 `http://100.x.x.x:8765/#token=...`. Buka pautan itu dalam **Chrome di fon**,
@@ -71,6 +79,17 @@ Untuk menukar token, padam `studio/data/token.txt` dan mulakan semula server.
   Server menganalisis tempo, variasi nada, jeda dan tekanan dalam rakaman.
 - **Status.** Keadaan PC dan GPU, model aktif, dan butang untuk menukar
   model.
+
+## Laptop dengan GPU 6 GB (cth. HP Victus RTX 4050)
+- **Cucuk pengecas.** Tanpa pengecas, GPU laptop jauh lebih perlahan.
+- Tutup permainan, Chrome dengan banyak tab, dan aplikasi berat di laptop
+  semasa menjana.
+- Satu model sahaja dimuatkan pada satu masa. Whisper (transkripsi
+  automatik) berjalan di CPU supaya tidak mengambil memori GPU.
+- **Jika VoxCPM2 ralat "CUDA out of memory"**, guna Chatterbox. Ia normal
+  untuk GPU 6 GB.
+- Dengan Chatterbox, emosi dikawal melalui intensiti dan bank emosi. Mod A
+  berfungsi. **Pemindahan gaya Mod B daripada rakaman memerlukan VoxCPM2.**
 
 ## Had yang perlu diketahui
 - PC mesti hidup dan server berjalan semasa anda guna fon.

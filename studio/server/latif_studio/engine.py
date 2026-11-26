@@ -56,6 +56,17 @@ def convert_upload(src: Path, dst: Path, sr: int = 24000) -> float:
     return audio.duration(y, s)
 
 
+def _gpu_vram_gb() -> float:
+    try:
+        import torch
+
+        if torch.cuda.is_available():
+            return torch.cuda.get_device_properties(0).total_memory / 2**30
+    except ImportError:
+        pass
+    return 0.0
+
+
 def transcribe(path: Path, language: str) -> str | None:
     """Optional: only if faster-whisper is installed on the server."""
     if not importlib.util.find_spec("faster_whisper"):
@@ -63,9 +74,11 @@ def transcribe(path: Path, language: str) -> str | None:
     from faster_whisper import WhisperModel
 
     if not hasattr(transcribe, "_m"):
-        dev = pick_device(None)
-        transcribe._m = WhisperModel("large-v3-turbo", device="cuda" if dev == "cuda" else "cpu",
-                                     compute_type="float16" if dev == "cuda" else "int8")
+        # Whisper shares the GPU with the TTS model; on small cards (e.g. 6 GB
+        # RTX 4050 laptop) keep it on the CPU so the voice model has the VRAM.
+        on_gpu = _gpu_vram_gb() >= 10
+        transcribe._m = WhisperModel("large-v3-turbo", device="cuda" if on_gpu else "cpu",
+                                     compute_type="float16" if on_gpu else "int8")
     segs, _ = transcribe._m.transcribe(str(path), language=language, beam_size=5)
     return " ".join(s.text.strip() for s in segs).strip()
 

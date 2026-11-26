@@ -7,4 +7,4 @@ emotion_direction_min: 0.70    # share of tagged outputs that move the right way
 tag_read_aloud_max: 0          # a tag spoken as a word is an automatic fail
 utmos_min: 3.5                 # predicted naturalness (1-5)
 rtf_max: 1.0                   # must generate faster than real time on the target GPU
-vram_mb_max: 11000             # set to your GPU's VRAM minus ~1 GB headroom
+vram_mb_max: 5500              # RTX 4050 Laptop (6 GB) minus headroom; raise for bigger GPUs
